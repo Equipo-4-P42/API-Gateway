@@ -1,7 +1,9 @@
 const platoResolver = {
     Query: {
         listPlatos: async(_, { }, { dataSources }) => {
-            return await dataSources.ventaAPI.getPlatoList()
+            data = await dataSources.ventaAPI.getPlatoList();
+            data.forEach(plato => {plato.amount = 0});                
+            return data
         },
     },
     Mutation: {
